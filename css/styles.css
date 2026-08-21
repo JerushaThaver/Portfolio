@@ -4526,8 +4526,8 @@ td:last-child {
 .image-container {
     display: grid;
     grid-template-columns: repeat(1fr, 2); /* Creates 3 equal-width columns */
-    gap: 10px; Space between the grid items
-    margin: 20px; Optional: Adds margin around the grid
+    gap: 10px;
+    margin: 20px;
 }
 
 
