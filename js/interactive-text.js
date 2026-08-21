@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         paragraphs.forEach((paragraph, paragraphIndex) => {
 
-            const text = paragraph.textContent.trim();
+            const text = paragraph.textContent.trim().replace(/\s+/g, " ");
 
             /*
              * Get paragraph position relative to article-text.
@@ -112,62 +112,73 @@ document.addEventListener("DOMContentLoaded", () => {
             let y = paragraphTop + fontSize;
 
             /*
-             * Break text into individual characters.
+             * Split into words so wrapping happens on
+             * whole words, just like the browser does.
              */
-            for (let i = 0; i < text.length; i++) {
+            const words = text.split(" ");
 
-                const char = text[i];
+            words.forEach((word, wordIndex) => {
 
-                const width =
-                    ctx.measureText(char).width +
-                    letterSpacing;
+                if (word.length === 0) return;
 
                 /*
-                 * Wrap characters exactly according to
-                 * the paragraph width.
+                 * Measure the whole word first so we can
+                 * decide whether it needs to wrap.
                  */
-                if (
-                    char !== " " &&
-                    x + width > paragraphLeft + paragraphWidth
-                ) {
+                let wordWidth = 0;
+                for (let i = 0; i < word.length; i++) {
+                    wordWidth += ctx.measureText(word[i]).width + letterSpacing;
+                }
 
+                if (
+                    x !== paragraphLeft &&
+                    x + wordWidth > paragraphLeft + paragraphWidth
+                ) {
                     x = paragraphLeft;
                     y += lineHeight;
+                }
 
+                for (let i = 0; i < word.length; i++) {
+
+                    const char = word[i];
+
+                    const width =
+                        ctx.measureText(char).width +
+                        letterSpacing;
+
+                    characters.push({
+
+                        char,
+
+                        originalX: x,
+                        originalY: y,
+
+                        x: x,
+                        y: y,
+
+                        vx: 0,
+                        vy: 0,
+
+                        width,
+
+                        rotation: 0,
+                        targetRotation: 0
+
+                    });
+
+                    x += width;
                 }
 
                 /*
-                 * Spaces don't need to be rendered,
-                 * but they still occupy width.
+                 * Add a space after the word (except
+                 * for the last word in the paragraph).
                  */
-                if (char === " ") {
-
-                    x += width;
-                    continue;
+                if (wordIndex < words.length - 1) {
+                    const spaceWidth = ctx.measureText(" ").width + letterSpacing;
+                    x += spaceWidth;
                 }
 
-                characters.push({
-
-                    char,
-
-                    originalX: x,
-                    originalY: y,
-
-                    x: x,
-                    y: y,
-
-                    vx: 0,
-                    vy: 0,
-
-                    width,
-
-                    rotation: 0,
-                    targetRotation: 0
-
-                });
-
-                x += width;
-            }
+            });
 
         });
     }
