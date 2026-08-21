@@ -4607,74 +4607,174 @@ td:last-child {
     background-color: var(--color-gray-10);
 }
 
-/* OTHER WORK */
-/* General Styling */
-.other-work {
+/* ===================================================================
+ * # PROJECT EDITORIAL (magazine-style project blocks)
+ * ------------------------------------------------------------------- */
+
+.project-editorial {
+    margin-bottom: var(--vspace-5);
+}
+
+.project-editorial__eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: var(--vspace-0_25);
+}
+
+.project-editorial__title {
+    font-family: var(--font-2);
+    text-transform: uppercase;
+    font-size: var(--text-xxl);
+    letter-spacing: 0.01em;
+    margin-top: 0;
+    margin-bottom: var(--vspace-1_5);
+}
+
+/* ---- dark visual band ---- */
+.project-editorial__visual {
+    position: relative;
+    background-color: var(--color-3);
+    padding: var(--vspace-3) var(--gutter) var(--vspace-4);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
+    justify-content: center;
+    margin-bottom: var(--vspace-1_5);
 }
 
-/* Alternate layout for each project */
-.other-work:nth-child(odd) {
-    flex-direction: row-reverse;
-
+.project-editorial__stack {
+    position: relative;
+    width: min(420px, 80%);
+    aspect-ratio: 4 / 5;
 }
 
-.other-work-image-box:nth-child(odd) {
-    flex-direction: row-reverse;
-
-}
-.other-work-container {
-    margin: 5%;
-}
-
-/* Image Box Styling */
-.other-work-image-box {
-    width: 400px;
-    height: 400px; /* Adjust size as needed */
-    /* Placeholder color */
+.project-editorial__plate {
+    position: absolute;
+    inset: 0;
+    border-radius: 2px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
     background-size: cover;
     background-position: center;
-    box-shadow: 20px 20px 0px 0px #000; /* Solid shadow */
-    transition: transform 0.3s ease; /* Add a hover effect */
-    
-
-
 }
 
-/* Add hover effect for a dynamic look */
-
-.other-work:nth-child(2) .other-work-image-box:hover {
-    transform: translate(-5px, -5px); /* Moves the box slightly up-left on hover */
-}
-.other-work:nth-child(3) .other-work-image-box:hover {
-    transform: translate(5px, -5px); /* Moves the box slightly up-left on hover */
+.project-editorial__plate.back {
+    transform: translate(28px, 28px);
+    background: var(--color-gray-10);
 }
 
-.other-work:nth-child(1) .other-work-image-box:hover {
-    transform: translate(-5px, -5px); /* Moves the box slightly up-left on hover */
+.project-editorial__plate.front {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    background: var(--color-gray-1);
 }
 
-
-/* Placeholder images */
-
-
-.other-work:nth-child(3) .other-work-image-box {
-    box-shadow: -20px 20px 0px 0px #000;
-    /* Replace with actual image URL */
- 
-    transition: transform 0.3s ease;
+.project-editorial__cover-type {
+    display: flex;
+    align-items: center;
+    padding: var(--vspace-1) var(--vspace-0_75);
+    font-family: var(--font-2);
+    font-size: var(--text-xl);
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
 }
 
-/* Typography on one side */
-.other-work-content {
-    flex: 1;
-    max-width: 500px;
-    margin: 0 20px;
+.project-editorial__cover-image {
+    background: linear-gradient(160deg, var(--color-gray-16), var(--color-3));
 }
 
+/* rotated "Project Execution" label */
+.project-editorial__exec {
+    position: absolute;
+    left: var(--vspace-1);
+    top: var(--vspace-3);
+    bottom: var(--vspace-4);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: flex-end;
+    gap: var(--vspace-0_375);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.project-editorial__exec .label {
+    font-weight: 700;
+}
+
+.project-editorial__exec .meta {
+    opacity: 0.55;
+}
+
+/* ---- copy ---- */
+.project-editorial__copy {
+    max-width: 60ch;
+    font-size: var(--text-sm);
+    line-height: var(--vspace-0_875);
+    color: var(--color-text-light);
+    margin-bottom: var(--vspace-1);
+}
+
+/* ---- build-stack panel ---- */
+.project-editorial__stackbox {
+    background: var(--color-gray-4);
+    border: 1px solid var(--color-border);
+    padding: var(--vspace-1_25) var(--vspace-1);
+}
+
+.project-editorial__stackbox h4 {
+    font-family: var(--font-1);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 var(--vspace-0_75);
+    padding-bottom: var(--vspace-0_625);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.project-editorial__tools {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.project-editorial__tools .tool {
+    text-align: center;
+    padding: var(--vspace-0_75) var(--vspace-0_25);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    color: var(--color-text-light);
+}
+
+.project-editorial__tools .tool:nth-child(odd) {
+    border-right: 1px solid var(--color-border);
+}
+
+.tool-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin: 0 auto var(--vspace-0_375);
+    border-radius: 6px;
+    font-family: var(--font-1);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    color: var(--color-white);
+}
+
+/* responsive */
+@media screen and (max-width: 1000px) {
+    .project-editorial__stackbox {
+        margin-top: var(--vspace-1);
+    }
+}
 
 /* EXPERIMENTING */
 
