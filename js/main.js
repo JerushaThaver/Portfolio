@@ -75,6 +75,34 @@
     }; // end ssMoveHeader
 
 
+   /* parallax project cards
+    * ---------------------------------------------------- */
+    const ssProjectParallax = function() {
+
+        const elements = document.querySelectorAll('[data-parallax]');
+        if (!elements.length) return;
+
+        const updateParallax = () => {
+            const viewportHeight = window.innerHeight;
+
+            elements.forEach((element) => {
+                const rect = element.getBoundingClientRect();
+                const speed = Number(element.dataset.speed || 0.12);
+                const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+                const translateY = (progress - 0.5) * 60 * speed;
+                element.style.transform = 'translate3d(0, ' + translateY + 'px, 0)';
+            });
+        };
+
+        window.addEventListener('scroll', function() {
+            requestAnimationFrame(updateParallax);
+        }, { passive: true });
+
+        updateParallax();
+
+    }; // end ssProjectParallax
+
+
    /* mobile menu
     * ---------------------------------------------------- */ 
     const ssMobileMenu = function() {
@@ -307,6 +335,7 @@
         ssGLightbox();
         ssSwiper();
         ssAlertBoxes();
+        ssProjectParallax();
         ssMoveTo();
 
     })();

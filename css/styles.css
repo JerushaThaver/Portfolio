@@ -4614,8 +4614,7 @@ td:last-child {
 /* ===== Frame ===== */
 .project-editorial {
   position: relative;
-  /* max-width: 98%; */
-  margin: 0 auto;
+  margin: 0 auto 52px;
   background: #f7f5ef;
   border: 1px solid #1c1a17;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -4627,26 +4626,29 @@ td:last-child {
 
 /* ===== Top dark stage ===== */
 .project-editorial__visual {
+  position: relative;
   background: #201e1b;
-  padding: 56px 40px 90px;
+  padding: 46px 22px 88px;
+  overflow: hidden;
+  will-change: transform;
 }
 
 .project-editorial__stack {
   position: relative;
-  width: 480px;
+  width: min(760px, 100%);
   max-width: 100%;
   margin: 0 auto;
 }
 
 .project-editorial__plate.back {
   position: absolute;
-  top: 40px;
+  top: 34px;
   left: 12px;
   width: 92%;
-  height: 300px;
-  background:
-    linear-gradient(to right, #9a978d 55%, transparent 55%),
-    url('https://picsum.photos/seed/urbanspaces2/500/500') right center/cover no-repeat;
+  height: 310px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   filter: grayscale(0.4) contrast(1.05);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
@@ -4668,40 +4670,42 @@ td:last-child {
   align-items: center;
   padding: 0 28px;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 34px;
-  line-height: 1.15;
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1.1;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  color: #111;
 }
 
 .project-editorial__cover-image {
   flex: 1;
-  background: url('https://picsum.photos/seed/urbanspaces1/500/600') center/cover no-repeat;
-  filter: grayscale(0.55) brightness(0.85) contrast(1.1) sepia(0.15);
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(0.55) brightness(0.85) contrast(1.1) sepia(0.1);
 }
 
 /* ===== Body: sidebar + main, full-height divider ===== */
 .project-editorial__body {
   display: flex;
-  margin-top: 50px;
   position: relative;
   z-index: 2;
   background: #f7f5ef;
-  border-radius: 0 18px 0 0;
-
-  margin-right: 2%;
+  min-height: 620px;
 }
 
 .project-editorial__sidebar {
-  flex: 0 0 44px;
+  flex: 0 0 58px;
+  position: relative;
   border-right: 1px solid #1c1a17;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   padding-top: 24px;
-  gap: 6px;
+  gap: 10px;
 }
 
 .project-editorial__sidebar-label,
@@ -4719,8 +4723,8 @@ td:last-child {
 .project-editorial__sidebar-label--bottom {
   position: absolute;
   left: 0;
-  bottom: 24px;
-  width: 44px;
+  bottom: 22px;
+  width: 58px;
   text-align: center;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -4733,42 +4737,52 @@ td:last-child {
 .project-editorial__main {
   flex: 1;
   position: relative;
-  padding: 40px 40px 64px 32px;
+  padding: 38px 30px 20px 28px;
+}
+
+.project-editorial__main .row {
+  margin: 0;
 }
 
 /* ===== Copy ===== */
 .project-editorial__copy {
   font-size: 15px;
   line-height: 1.7;
-  margin-bottom: 20px;
-  max-width: 460px;
+  margin: 0 0 20px;
+  max-width: 540px;
+  color: #1d1b18;
 }
 
 /* ===== Second photo stack ===== */
 .project-editorial__stack--secondary {
-  width: 320px;
+  width: min(350px, 100%);
   max-width: 100%;
-  margin-top: 32px;
+  margin-top: 28px;
   margin-bottom: 32px;
 }
-.project-editorial__stack--secondary .plate.back {
-  height: 220px;
-  top: 20px;
+
+.project-editorial__stack--secondary .project-editorial__plate.back {
+  top: 22px;
   left: 8px;
+  height: 220px;
 }
-.project-editorial__stack--secondary .plate.front {
+
+.project-editorial__stack--secondary .project-editorial__plate.front {
   height: 260px;
 }
+
 .project-editorial__cover-image.secondary {
-  background: url('https://picsum.photos/seed/urbanspaces3/500/650') center/cover no-repeat;
-  filter: grayscale(0.5) brightness(0.9) contrast(1.05) sepia(0.1);
   width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(0.5) brightness(0.9) contrast(1.05) sepia(0.1);
 }
 
 /* ===== Build stack column ===== */
-.column.xl-4 {
+.project-editorial .column.xl-4 {
   border-left: 1px solid #1c1a17;
-  padding-left: 32px;
+  padding-left: 28px;
 }
 
 .project-editorial__stackbox h4 {
@@ -4793,7 +4807,7 @@ td:last-child {
 .project-editorial__tools .tool {
   border-right: 1px solid #d8d4c9;
   border-bottom: 1px solid #d8d4c9;
-  padding: 20px 10px;
+  padding: 18px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4801,10 +4815,19 @@ td:last-child {
   text-align: center;
   font-size: 12px;
   line-height: 1.4;
+  background: rgba(255,255,255,0.05);
 }
 
-.two-col .tool { align-items: flex-start; text-align: left; font-size: 11px; }
-.two-col .tool em { font-style: normal; color: #6b675d; }
+.project-editorial__tools.two-col .tool {
+  align-items: flex-start;
+  text-align: left;
+  font-size: 11px;
+}
+
+.project-editorial__tools.two-col .tool em {
+  font-style: normal;
+  color: #6b675d;
+}
 
 .tool-icon {
   width: 34px;
@@ -4816,6 +4839,7 @@ td:last-child {
   color: #fff;
   font-weight: 700;
   font-size: 13px;
+  line-height: 1;
 }
 .tool-icon.figma   { background: #1c1a17; }
 .tool-icon.ai      { background: #330000; }
@@ -4823,10 +4847,10 @@ td:last-child {
 
 /* ===== Button ===== */
 .btn.u-fullwidth {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top:4%;
+  margin-top: 18px;
   width: 100%;
   text-align: center;
   padding: 14px 0;
@@ -4842,20 +4866,54 @@ align-items: center;
 }
 .btn.u-fullwidth:hover { background: #000000; color: #fff; }
 
+.project-editorial__video-panel {
+  position: relative;
+  width: min(420px, 100%);
+  height: 230px;
+  margin-top: 12px;
+  border: 1px solid #1c1a17;
+  background: #d5d1ca;
+  overflow: hidden;
+  box-shadow: 0 18px 30px rgba(0,0,0,0.12);
+  will-change: transform;
+}
 
-
-
+.project-editorial__video-panel video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: grayscale(0.35) contrast(1.1);
+}
 
 /* ===== Responsive ===== */
 @media (max-width: 700px) {
   .project-editorial__body { flex-direction: column; }
-  .project-editorial__sidebar { flex-direction: row; writing-mode: horizontal-tb; }
+  .project-editorial__sidebar {
+    flex-direction: row;
+    justify-content: space-between;
+    border-right: none;
+    border-bottom: 1px solid #1c1a17;
+    padding: 16px 18px;
+    gap: 0;
+  }
   .project-editorial__sidebar-label,
-  .project-editorial__sidebar-meta { writing-mode: horizontal-tb; transform: none; }
-  .column.xl-4 { border-left: none; border-top: 1px solid #1c1a17; padding-left: 0; padding-top: 24px; margin-top: 24px; }
+  .project-editorial__sidebar-meta {
+    writing-mode: horizontal-tb;
+    transform: none;
+    white-space: normal;
+  }
+  .project-editorial .column.xl-4 {
+    border-left: none;
+    border-top: 1px solid #1c1a17;
+    padding-left: 0;
+    padding-top: 24px;
+    margin-top: 24px;
+  }
   .project-editorial__plate.front { flex-direction: column; height: auto; }
   .project-editorial__cover-type, .project-editorial__cover-image { flex: none; width: 100%; }
   .project-editorial__cover-image { height: 200px; }
+  .project-editorial__video-panel { height: 200px; }
 }
 
 
