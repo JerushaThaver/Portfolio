@@ -4693,7 +4693,7 @@ td:last-child {
   position: relative;
   z-index: 2;
   background: #f7f5ef;
-  min-height: 620px;
+  min-height: 50px;
 }
 
 .project-editorial__sidebar {
@@ -4754,31 +4754,6 @@ td:last-child {
 }
 
 /* ===== Second photo stack ===== */
-.project-editorial__stack--secondary {
-  width: min(350px, 100%);
-  max-width: 100%;
-  margin-top: 28px;
-  margin-bottom: 32px;
-}
-
-.project-editorial__stack--secondary .project-editorial__plate.back {
-  top: 22px;
-  left: 8px;
-  height: 220px;
-}
-
-.project-editorial__stack--secondary .project-editorial__plate.front {
-  height: 260px;
-}
-
-.project-editorial__cover-image.secondary {
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: grayscale(0.5) brightness(0.9) contrast(1.05) sepia(0.1);
-}
-
 /* ===== Build stack column ===== */
 .project-editorial .column.xl-4 {
   border-left: 1px solid #1c1a17;
