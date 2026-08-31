@@ -4816,6 +4816,36 @@ td:last-child {
   font-size: 13px;
   line-height: 1;
 }
+
+.tool-logo {
+    width: 28px;
+    height: 28px;
+    display: block;
+    background-color: var(--color-1-light); /* Your custom colour */
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+}
+
+/* Official logos */
+.figma-logo {
+    mask-image: url("https://cdn.simpleicons.org/figma");
+    -webkit-mask-image: url("https://cdn.simpleicons.org/figma");
+}
+
+.react-logo {
+    mask-image: url("https://cdn.simpleicons.org/react");
+    -webkit-mask-image: url("https://cdn.simpleicons.org/react");
+}
+
+.expo-logo {
+    mask-image: url("https://cdn.simpleicons.org/expo");
+    -webkit-mask-image: url("https://cdn.simpleicons.org/expo");
+}
+
 .tool-icon.figma   { background: #1c1a17; }
 .tool-icon.ai      { background: #330000; }
 .tool-icon.blender { background: #e87d0d; }
